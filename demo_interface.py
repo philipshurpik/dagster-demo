@@ -17,7 +17,7 @@ def send_data(company_name: str, competitors: list):
 
 if __name__ == '__main__':
     os.makedirs(DATA_DIR, exist_ok=True)
-    st.title("Company analysis")
+    st.title("Demo")
     input_company = st.text_input("Company Name")
     input_competitors = st.text_input("Competitors")
     submit_button = st.button("Submit")
