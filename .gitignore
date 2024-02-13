@@ -1,0 +1,5 @@
+.idea
+data/releases/*
+data/*.json
+.env
+*.duckdb
