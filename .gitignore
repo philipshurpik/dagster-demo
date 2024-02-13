@@ -1,5 +1,5 @@
 .idea
 data/releases/*
-data/*.json
+data/**/*.json
 .env
 *.duckdb

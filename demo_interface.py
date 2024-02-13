@@ -3,7 +3,7 @@ import json
 import streamlit as st
 
 
-DATA_DIR = 'data'
+DATA_DIR = 'data/clients_meta'
 
 
 def send_data(company_name: str, competitors: list):

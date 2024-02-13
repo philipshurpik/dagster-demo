@@ -5,14 +5,14 @@ from typing import Tuple
 import requests
 from dagster import AssetSelection, RunRequest, SensorResult, SkipReason, sensor
 
-from . import assets
+from . import release_assets
 
 
 def semver_tuple(release: str) -> Tuple[int, ...]:
     return tuple(map(int, release.split(".")))
 
 
-@sensor(asset_selection=AssetSelection.all())
+@sensor(asset_selection=AssetSelection.groups('release'))
 def release_sensor(context):
     """Polls the Github API for new releases.
 
@@ -50,7 +50,7 @@ def release_sensor(context):
             run_requests=[RunRequest(partition_key=new_releases[-1])],
             cursor=new_releases[-1],
             dynamic_partitions_requests=[
-                assets.releases_partitions_def.build_add_request(partitions_to_add)
+                release_assets.releases_partitions_def.build_add_request(partitions_to_add)
             ],
         )
     else:
