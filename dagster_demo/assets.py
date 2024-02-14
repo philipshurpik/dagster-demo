@@ -29,11 +29,8 @@ def clients_meta_load(context: AssetExecutionContext) -> DataFrame:
 def competitor_analysis(clients_meta_load: DataFrame) -> None:
     """Search data for each competitor"""
     company_name = clients_meta_load.iloc[0]["company_name"]
-    competitor_name = clients_meta_load.iloc[0]["competitor_name"]
-
     print("************************************* Company name: ", company_name)
-    print("************************************* Company name: ", competitor_name)
-
-    # target_zip_path = _get_release_zip_path(context.partition_key)
-    # os.mkdir(os.path.dirname(target_zip_path))
-    # urllib.request.urlretrieve(zipball_url, target_zip_path)
+    for i in range(len(clients_meta_load)):
+        competitor_name = clients_meta_load.iloc[i]["competitor_name"]
+        print("Competitor name: ", competitor_name)
+    print("*************************************")
