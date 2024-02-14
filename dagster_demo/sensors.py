@@ -8,7 +8,7 @@ from .jobs import clients_job
 CLIENTS_DIR = 'data/clients_meta'
 
 
-@sensor(job=clients_job)
+@sensor(job=clients_job, minimum_interval_seconds=5)
 def client_sensor(context: SensorEvaluationContext):
     clients = os.listdir(CLIENTS_DIR)
     new_clients = [c for c in clients if not clients_partitions_def.has_partition_key(c, dynamic_partitions_store=context.instance)]
