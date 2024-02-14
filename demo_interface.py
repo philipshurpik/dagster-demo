@@ -1,7 +1,7 @@
 import os
-import json
 import streamlit as st
 
+from dagster_demo.utils import write_json
 
 DATA_DIR = 'data/clients_meta'
 
@@ -11,8 +11,7 @@ def send_data(company_name: str, competitors: list):
         "company_name": company_name,
         "competitors": competitors
     }
-    with open(f"{DATA_DIR}/{company_name}.json", "w") as file:
-        json.dump(data, file)
+    write_json(f"{DATA_DIR}/{company_name}.json", data)
 
 
 if __name__ == '__main__':
